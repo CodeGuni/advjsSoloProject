@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fitness Tracker - Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Fitness Tracker</h1>
+    <nav>
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="log.html">Log Workout</a>
+      <a href="goals.html">Set Goals</a>
+    </nav>
+  </header>
+  <main>
+    <section id="dashboardSection">
+      <h2>Dashboard</h2>
+      <div id="greeting"></div>
+      <div id="fitbitStatus">
+        <button id="connectFitbitBtn">Connect to Fitbit</button>
+        <p id="fitbitMessage">Not connected</p>
+      </div>
+      <div class="dashboard-grid">
+        <div class="widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Stats</h3>
+          </div>
+          <div id="stats" class="widget-content">
+            <p>Total Calories: <span id="totalCalories">0</span></p>
+            <p>Weekly Average: <span id="weeklyAvg">0</span></p>
+            <p>Streak: <span id="streak">0</span> days</p>
+            <div class="progress-container">
+              <div class="progress-info">
+                <span class="progress-label">Goal Progress</span>
+                <span id="goalProgressText" class="progress-value">0 / 1000 (0%)</span>
+              </div>
+              <progress id="goalProgress" value="0" max="100"></progress>
+            </div>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Calories Burned (Last 7 Days)</h3>
+          </div>
+          <div class="widget-content">
+            <canvas id="calorieChart"></canvas>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Fitbit Weekly Calories</h3>
+          </div>
+          <div class="widget-content">
+            <canvas id="fitbitWeeklyChart"></canvas>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-header">
+            <h3 class="widget-title">Fitbit Weekly Steps</h3>
+          </div>
+          <div class="widget-content">
+            <canvas id="fitbitWeeklyStepsChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div id="quote"></div>
+    </section>
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+    </div>
+  </main>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/view.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/fitnessLib.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => Controller.initDashboard());
+  </script>
+</body>
+</html>

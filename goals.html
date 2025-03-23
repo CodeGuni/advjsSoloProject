@@ -1,0 +1,75 @@
+<!--
+ * ================================================================
+ * File: goals.html
+ * Author: Gunpreet Singh
+ * Student ID: 9022194
+ * Description: Goals page for setting and tracking fitness objectives
+ * ================================================================
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fitness Tracker - Set Goals</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Fitness Tracker</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="log.html">Log Workout</a>
+      <a href="goals.html">Set Goals</a>
+    </nav>
+  </header>
+  <main>
+    <section id="goalsSection">
+      <h2>Set Your Goals</h2>
+      <p>Push yourself to new heights!</p>
+      <button id="addGoalBtn">Set a Goal</button>
+      <div id="currentGoal" class="card">
+        <h3>Current Goal</h3>
+        <p id="goalText">No goal set yet.</p>
+        <progress id="goalProgressBar" value="0" max="100"></progress>
+        <span id="goalProgressText">0%</span>
+      </div>
+    </section>
+
+    <!-- Modal for goal form -->
+    <div id="goalModal" class="modal">
+      <div class="modal-content">
+        <span class="close">×</span>
+        <h2>Set a Goal</h2>
+        <form id="goalForm">
+          <label for="type">Type:</label>
+          <select id="type" name="type" required>
+            <option value="calories">Calories</option>
+            <option value="steps">Steps</option>
+          </select><br>
+          <label for="target">Target:</label>
+          <input type="number" id="target" name="target" placeholder="e.g., 1000" required><br>
+          <label for="timeframe">Timeframe:</label>
+          <select id="timeframe" name="timeframe" required>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+          </select><br>
+          <button type="submit">Save Goal</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+    </div>
+  </main>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/view.js"></script>
+  <script src="js/controller.js"></script>
+  <script src="js/fitnessLib.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => Controller.initGoals());
+  </script>
+</body>
+</html>
